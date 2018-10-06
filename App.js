@@ -1,25 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Main from './screens/Main';
 
-import SignUp from './screens/SignUp';
-import SignIn from './screens/SignIn';
-import ProtectedScreen from './screens/ProtectedScreen';
+// redux
+// import { createStore, applyMiddleware } from 'redux'
+// import { Provider } from 'react-redux'
+// import rootReducer from './src/reducers'
+// import thunk from 'redux-thunk'
+// const store = createStore(
+  // rootReducer,
+  // applyMiddleware(thunk)
+// );
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <SignUp />
-      </View>
+      // <Provider store={store}>
+        <Main />
+      // </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-});
