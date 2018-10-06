@@ -1,11 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import SignUp from './screens/SignUp';
+import SignIn from './screens/SignIn';
+import ProtectedScreen from './screens/ProtectedScreen';
+
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <SignUp />
       </View>
     );
   }
@@ -17,5 +21,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });
