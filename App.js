@@ -2,21 +2,26 @@ import React from 'react';
 import Main from './screens/Main';
 
 // redux
-// import { createStore, applyMiddleware } from 'redux'
-// import { Provider } from 'react-redux'
-// import rootReducer from './src/reducers'
-// import thunk from 'redux-thunk'
-// const store = createStore(
-  // rootReducer,
-  // applyMiddleware(thunk)
-// );
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import createSagaMiddleware from 'redux-saga';
+
+import rootReducer from './store/rootReducer'
+import rootSaga from './store/sagas';
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(
+  rootReducer,
+  applyMiddleware(sagaMiddleware)
+);
+sagaMiddleware.run(rootSaga);
 
 export default class App extends React.Component {
   render() {
     return (
-      // <Provider store={store}>
+      <Provider store={store}>
         <Main />
-      // </Provider>
+      </Provider>
     );
   }
 }
