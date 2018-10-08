@@ -10,6 +10,7 @@ import ProtectedScreen from './ProtectedScreen';
 
 // TODO: Add React Navigation
 // TODO: Add logic wich basing on a boolean isLoggedIn directs to one navigation stack or another
+//      The navigation stacks are AUTH and MAIN NAVIGATION (or smthg similar - check the diagram at)
 // TODO: State management - redux
 
 class Main extends React.Component {
@@ -17,7 +18,9 @@ class Main extends React.Component {
     const { user, logIn } = this.props;
     if (user === null) {
       console.log('NO USER!');
-      logIn();
+      setTimeout(() => {
+        logIn();
+      }, 1000);
     }
   }
 
@@ -41,9 +44,15 @@ class Main extends React.Component {
 
 
   render() {
+    const { user } = this.props;
+    const isLoggedIn = user && user.username;
+
     return (
       <View style={styles.container}>
-        <SignUp />
+        { (isLoggedIn 
+            ? <ProtectedScreen />
+            : <SignUp />
+        )}
       </View>
     );
   }
