@@ -5,7 +5,8 @@ import * as actions from './actions';
 function* logInSaga() {
   try {
     // TODO: Login logic
-    const user = { username: 'Kowalski' };
+    // const user = { username: 'Kowalski' };
+    const user = null;
     yield put(actions.logInSuccess(user));
   } catch (error) {
     yield put(acions.logInFailure(error));

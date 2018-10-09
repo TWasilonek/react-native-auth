@@ -41,10 +41,6 @@ const MainStack = createStackNavigator({
 });
 
 class Main extends React.Component {
-  state = {
-    isLoggedIn: false,
-  };
-
   componentDidMount() {
     const { user, logIn } = this.props;
     if (user === null) {
@@ -66,10 +62,8 @@ class Main extends React.Component {
       if (user && user.username) {
         if (!prevProps.user) {
           console.log('we have a new user:', user);
-          this.setState({ isLoggedIn: true });
         } else if (user.username !== prevProps.user.username) {
           console.log('we have a new user:', user);
-          this.setState({ isLoggedIn: true });
         }
       }
     }
@@ -77,8 +71,7 @@ class Main extends React.Component {
 
   render() {
     const { user } = this.props;
-    const { isLoggedIn } = this.state;
-    // const isLoggedIn = user && !!user.username;
+    const isLoggedIn = user && !!user.username;
     console.log('user', user);
     console.log('isLoggedIn: ', isLoggedIn);
 
