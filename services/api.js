@@ -1,11 +1,11 @@
 export const login = ({ email, password }) => {
   // fake async http call returning user
-  console.log('in api: ', email, password);
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve({ 
+      resolve({
         username: email,
-        password
+        email,
+        password,
       });
     }, 300);
   });

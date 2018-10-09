@@ -6,3 +6,5 @@ export const LOG_OUT = 'LOG_OUT';
 export const SIGN_UP = 'SIGN_UP';
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
+
+export const STORAGE_LOG_IN = 'STORAGE_LOG_IN';

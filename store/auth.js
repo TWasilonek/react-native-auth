@@ -4,17 +4,19 @@ const initialState = {
   user: null,
   isAuthenticating: false,
   loginError: false,
-  signInError: false
+  loginError: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case types.LOG_IN:
+    case types.SIGN_UP:
       return {
         ...state,
         isAuthenticating: true,
       }
     case types.LOG_IN_SUCCESS:
+    case types.STORAGE_LOG_IN:
       return {
         ...state,
         isAuthenticating: false,
@@ -24,7 +26,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isAuthenticating: false,
-        signInError: action.error,
+        loginError: action.error,
       }
     case types.SIGN_UP:
       return {

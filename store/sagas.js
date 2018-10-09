@@ -2,14 +2,16 @@ import { put, takeEvery, all, call } from 'redux-saga/effects';
 import * as types from './actionTypes';
 import * as actions from './actions';
 
-import * as api from '../api';
+import * as api from '../services/api';
+import * as storage from '../services/persistentStorage';
 
 function* loginSaga(action) {
   try {
-    const user = yield call(api.login, action.payload);
-    yield put(actions.logInSuccess(user));
+    const user = yield call(api.login, {...action.payload});
+    yield call(storage.storeData, 'user', JSON.stringify(user));
+    yield put(actions.loginSuccess(user));
   } catch (error) {
-    yield put(acions.logInFailure(error));
+    yield put(acions.logniFailure(error));
   }
 }
 

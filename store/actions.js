@@ -14,11 +14,11 @@ export const signUpFailure = (err) => ({
   error: err,
 });
 
-export const login = (email, password) => ({
+export const login = ({email, password}) => ({
   type: types.LOG_IN,
   payload: {
-    email,
-    password
+    email: email,
+    password: password
   }
 });
 
@@ -26,12 +26,17 @@ export const logOut = () => ({
   type: types.LOG_OUT,
 });
 
-export const logInSuccess = (user) => ({
+export const loginSuccess = (user) => ({
   type: types.LOG_IN_SUCCESS,
   payload: user,
 });
 
-export const logInFailure = (err) => ({
+export const loginFailure = (err) => ({
   type: types.LOG_IN_FAILURE,
   error: err,
+});
+
+export const storageLogin = (user) => ({
+  type: types.STORAGE_LOG_IN,
+  payload: { ...user }
 });
