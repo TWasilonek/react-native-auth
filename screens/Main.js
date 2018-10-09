@@ -43,12 +43,12 @@ const MainStack = createStackNavigator({
 class Main extends React.Component {
   componentDidMount() {
     const { user, logIn } = this.props;
-    if (user === null) {
-      console.log('NO USER!');
-      setTimeout(() => {
-        logIn();
-      }, 1000);
-    }
+    // if (user === null) {
+    //   console.log('NO USER!');
+    //   setTimeout(() => {
+    //     logIn();
+    //   }, 1000);
+    // }
   }
 
   componentDidUpdate(prevProps) {
@@ -87,7 +87,7 @@ Main.propTypes = {
   user: PropTypes.shape({}),
   isAuthenticating: PropTypes.bool,
   loginError: PropTypes.shape({}),
-  logIn: PropTypes.func.isRequired,
+  // logIn: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {

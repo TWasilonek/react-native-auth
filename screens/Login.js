@@ -1,10 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
-import { Text } from 'react-native-elements';
 import { Button } from 'react-native-elements';
+import { connect } from 'react-redux';
 
 import ScreenContainer from '../components/ScreenContainer';
 import AppInput from '../components/AppInput';
+
+import * as actions from '../store/actions';
 
 class Login extends React.PureComponent {
   state = {
@@ -17,10 +20,13 @@ class Login extends React.PureComponent {
   };
 
   onSubmit = () => {
-    // TODO: login user
+    const { login } = this.props;
+    const params = { ...this.state };
+    login(params);
   }
 
   render() {
+    const { email, password } = this.state;
     return (
       <ScreenContainer>
         <View style={styles.container}>
@@ -36,6 +42,7 @@ class Login extends React.PureComponent {
           <Button
             title='LOGIN'
             onPress={this.onSubmit}
+            disabled={!email || !password}
           />
           <View style={styles.additionalActions}>
             <Button
@@ -66,4 +73,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Login;
+Login.propTypes = {
+  login: PropTypes.func.isRequired
+};
+
+export default connect(null, actions)(Login);

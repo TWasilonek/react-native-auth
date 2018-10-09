@@ -14,8 +14,12 @@ export const signUpFailure = (err) => ({
   error: err,
 });
 
-export const logIn = () => ({
+export const login = (email, password) => ({
   type: types.LOG_IN,
+  payload: {
+    email,
+    password
+  }
 });
 
 export const logOut = () => ({
