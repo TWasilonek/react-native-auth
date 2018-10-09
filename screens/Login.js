@@ -1,27 +1,29 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import {
-  FormLabel,
-  FormInput,
-  FormValidationMessage,
-  Text
-} from 'react-native-elements';
+import { Text } from 'react-native-elements';
 
 import ScreenContainer from '../components/ScreenContainer';
+import AppInput from '../components/AppInput';
 
 class Login extends React.PureComponent {
-  onChangeText = text => {
-    console.log(text);
+  state = {
+    email: '',
+    password: '',
+  };
+
+  onChangeInput = (text, name) => {
+    this.setState({ [name]: text });
   };
 
   render() {
     return (
       <ScreenContainer>
         <View style={styles.container}>
-          <Text>Sign In</Text>
-          <FormLabel>Name</FormLabel>
-          <FormInput onChangeText={this.onChangeText} />
-          <FormValidationMessage>Error message</FormValidationMessage>
+          <Text>Login</Text>
+          <AppInput
+            label="Email"
+            onChangeInput={(value) => this.onChangeInput(value, 'email')}
+          />
         </View>
       </ScreenContainer>
     );
