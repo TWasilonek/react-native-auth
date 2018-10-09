@@ -6,11 +6,11 @@ import {
   FormInput,
 } from 'react-native-elements';
 
-const AppInput = ({ label, onChangeInput }) => {
+const AppInput = ({ label, onChangeInput, ...rest }) => {
   return (
     <View style={styles.inputContainer}>
       <FormLabel>{label}</FormLabel>
-      <FormInput onChangeText={onChangeInput} />
+      <FormInput onChangeText={onChangeInput} {...rest} />
     </View>
   );
 };
@@ -27,7 +27,7 @@ AppInput.defaultProps = {
 
 const styles = StyleSheet.create({
   inputContainer: {
-    flex: 1
+    marginBottom: 20,
   }
 });
 
