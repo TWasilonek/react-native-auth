@@ -4,15 +4,19 @@ import {
   Text
 } from 'react-native-elements';
 
+import ScreenContainer from '../components/ScreenContainer';
+
 class ProtectedScreen extends React.PureComponent {
   render() {
     return (
-      <View>
-        <Text>ProtectedScreen</Text>
-        <Text>ProtectedScreen</Text>
-        <Text>ProtectedScreen</Text>
-        <Text>ProtectedScreen</Text>
-      </View>
+      <ScreenContainer>
+        <View>
+          <Text>ProtectedScreen</Text>
+          <Text>ProtectedScreen</Text>
+          <Text>ProtectedScreen</Text>
+          <Text>ProtectedScreen</Text>
+        </View>
+      </ScreenContainer>
     );
   }
 }
