@@ -27,6 +27,7 @@ class Login extends React.PureComponent {
 
   render() {
     const { email, password } = this.state;
+    const { navigation } = this.props;
     return (
       <ScreenContainer>
         <View style={styles.container}>
@@ -49,11 +50,13 @@ class Login extends React.PureComponent {
               title="Not a member? Sign In"
               color="#0000ff"
               backgroundColor="transparent"
+              onPress={() => navigation.navigate('SignUp')}
             />
             <Button
               title="Forgot Password"
               color="#0000ff"
               backgroundColor="transparent"
+              onPress={() => navigation.navigate('ForgotPassword')}
             />
           </View>
         </View>
@@ -74,7 +77,8 @@ const styles = StyleSheet.create({
 });
 
 Login.propTypes = {
-  login: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 export default connect(null, actions)(Login);

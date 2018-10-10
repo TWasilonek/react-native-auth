@@ -24,9 +24,20 @@ function* logoutSaga() {
   }
 }
 
+function* signUpSaga(action) {
+  try {
+    const user = yield call(api.signUp, { ...action.payload });
+    yield call(storage.storeData, 'user', JSON.stringify(user));
+    yield put(actions.signUpSuccess(user));
+  } catch (error) {
+    yield put(acions.signUpFailure(error));
+  }
+}
+
 function* watchAuthSaga() {
   yield takeEvery(types.LOG_IN, loginSaga);
   yield takeEvery(types.LOG_OUT, logoutSaga);
+  yield takeEvery(types.SIGN_UP, signUpSaga);
 }
 
 export default function* rootSaga() {
