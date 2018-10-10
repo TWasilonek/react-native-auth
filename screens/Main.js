@@ -10,6 +10,8 @@ import Login from './Login';
 import ProtectedScreen from './ProtectedScreen';
 import ForgotPassword from './ForgotPassword';
 
+import { colors } from '../theme';
+
 const AuthStack = createStackNavigator(
   {
     Login: Login,
@@ -17,13 +19,25 @@ const AuthStack = createStackNavigator(
     ForgotPassword: ForgotPassword
   },
   {
-    initialRouteName: 'Login'
+    initialRouteName: 'Login',
+    navigationOptions: {
+      title: 'React Native Auth',
+      headerTintColor: colors.green,
+    }
   }
 );
 
-const MainStack = createStackNavigator({
-  ProtectedScreen: ProtectedScreen
-});
+const MainStack = createStackNavigator(
+  {
+    ProtectedScreen: ProtectedScreen,
+  },
+  {
+    navigationOptions: {
+      title: 'React Native Auth',
+      headerTintColor: colors.green,
+    }
+  }
+);
 
 class Main extends React.Component {
   async componentDidMount() {
@@ -41,16 +55,17 @@ class Main extends React.Component {
   componentDidUpdate(prevProps) {
     const {
       loginError,
+      signUpError,
       isAuthenticating,
       user,
     } = this.props;
 
-    if(!isAuthenticating && !loginError) {
+    if(!isAuthenticating) {
       if (user && user.username) {
         if (!prevProps.user) {
-          console.log('we have a new user:', user);
+          // a user has logged in
         } else if (user.username !== prevProps.user.username) {
-          console.log('we have a new user:', user);
+          // a new user has logged in
         }
       }
     }
@@ -59,8 +74,6 @@ class Main extends React.Component {
   render() {
     const { user } = this.props;
     const isLoggedIn = user && !!user.username;
-    console.log('user', user);
-    console.log('isLoggedIn: ', isLoggedIn);
 
     return (
       isLoggedIn 
@@ -73,12 +86,11 @@ class Main extends React.Component {
 Main.propTypes = {
   user: PropTypes.shape({}),
   isAuthenticating: PropTypes.bool,
-  loginError: PropTypes.shape({}),
   storageLogin: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
-  const { user, isAuthenticating } = state.auth;
+  const { user, isAuthenticating, loginError, signUpError } = state.auth;
   return {
     user,
     isAuthenticating,
