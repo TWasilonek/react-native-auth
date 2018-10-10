@@ -22,8 +22,16 @@ export const login = ({email, password}) => ({
   }
 });
 
-export const logOut = () => ({
+export const logout = () => ({
   type: types.LOG_OUT,
+});
+
+export const logoutSuccess = () => ({
+  type: types.LOG_OUT_SUCCESS,
+});
+
+export const logoutFailure = () => ({
+  type: types.LOG_OUT_FAILURE,
 });
 
 export const loginSuccess = (user) => ({

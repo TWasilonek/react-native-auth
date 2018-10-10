@@ -15,8 +15,18 @@ function* loginSaga(action) {
   }
 }
 
+function* logoutSaga() {
+  try {
+    yield call(storage.removeData, 'user');
+    yield put(actions.logoutSuccess());
+  } catch (error) {
+    yield put(acions.logoutFailure(error));
+  }
+}
+
 function* watchAuthSaga() {
   yield takeEvery(types.LOG_IN, loginSaga);
+  yield takeEvery(types.LOG_OUT, logoutSaga);
 }
 
 export default function* rootSaga() {

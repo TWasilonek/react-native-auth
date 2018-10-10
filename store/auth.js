@@ -28,6 +28,11 @@ export default (state = initialState, action) => {
         isAuthenticating: false,
         loginError: action.error,
       }
+    case types.LOG_OUT_SUCCESS:
+      return {
+        ...state,
+        user: null,
+      }
     case types.SIGN_UP:
       return {
         ...state,

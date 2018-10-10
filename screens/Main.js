@@ -27,7 +27,7 @@ const MainStack = createStackNavigator({
 
 class Main extends React.Component {
   async componentDidMount() {
-    const { user , storageLogin} = this.props;
+    const { user, storageLogin} = this.props;
     if (user === null) {
       try {
         const savedUser = await storage.retrieveData('user');
