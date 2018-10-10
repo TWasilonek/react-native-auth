@@ -14,34 +14,34 @@ import { colors } from '../theme';
 
 const AuthStack = createStackNavigator(
   {
-    Login: Login,
-    SignUp: SignUp,
-    ForgotPassword: ForgotPassword
+    Login,
+    SignUp,
+    ForgotPassword,
   },
   {
     initialRouteName: 'Login',
     navigationOptions: {
       title: 'React Native Auth',
       headerTintColor: colors.green,
-    }
-  }
+    },
+  },
 );
 
 const MainStack = createStackNavigator(
   {
-    ProtectedScreen: ProtectedScreen,
+    ProtectedScreen,
   },
   {
     navigationOptions: {
       title: 'React Native Auth',
       headerTintColor: colors.green,
-    }
-  }
+    },
+  },
 );
 
 class Main extends React.Component {
   async componentDidMount() {
-    const { user, storageLogin} = this.props;
+    const { user, storageLogin } = this.props;
     if (user === null) {
       try {
         const savedUser = await storage.retrieveData('user');
@@ -54,13 +54,11 @@ class Main extends React.Component {
 
   componentDidUpdate(prevProps) {
     const {
-      loginError,
-      signUpError,
       isAuthenticating,
       user,
     } = this.props;
 
-    if(!isAuthenticating) {
+    if (!isAuthenticating) {
       if (user && user.username) {
         if (!prevProps.user) {
           // a user has logged in
@@ -76,7 +74,7 @@ class Main extends React.Component {
     const isLoggedIn = user && !!user.username;
 
     return (
-      isLoggedIn 
+      isLoggedIn
         ? <MainStack />
         : <AuthStack />
     );
@@ -85,16 +83,20 @@ class Main extends React.Component {
 
 Main.propTypes = {
   user: PropTypes.shape({}),
-  isAuthenticating: PropTypes.bool,
+  isAuthenticating: PropTypes.bool.isRequired,
   storageLogin: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => {
-  const { user, isAuthenticating, loginError, signUpError } = state.auth;
+Main.defaultProps = {
+  user: null,
+};
+
+const mapStateToProps = (state) => {
+  const { user, isAuthenticating } = state.auth;
   return {
     user,
     isAuthenticating,
   };
-}
+};
 
 export default connect(mapStateToProps, actions)(Main);

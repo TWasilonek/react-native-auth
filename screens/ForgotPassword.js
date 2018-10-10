@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
-import { Text} from 'react-native-elements';
+import { Text } from 'react-native-elements';
 
 import ScreenContainer from '../components/ScreenContainer';
 import AppInput from '../components/AppInput';
 import AppButton from '../components/AppButton';
+
+const styles = StyleSheet.create({
+  container: {
+    width: '90%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+});
 
 class ForgotPassword extends React.PureComponent {
   state = {
@@ -31,10 +39,10 @@ class ForgotPassword extends React.PureComponent {
           </Text>
           <AppInput
             label="Email"
-            onChangeInput={(value) => this.onChangeInput(value, 'email')}
+            onChangeInput={value => this.onChangeInput(value, 'email')}
           />
           <AppButton
-            title='SEND EMAIL'
+            title="SEND EMAIL"
             onPress={this.onSubmit}
             disabled={!email}
           />
@@ -44,16 +52,8 @@ class ForgotPassword extends React.PureComponent {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    width: '90%',
-    marginLeft: 'auto',
-    marginRight: 'auto'
-  },
-});
-
 ForgotPassword.propTypes = {
-  navigation: PropTypes.shape({}).isRequired
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 export default ForgotPassword;

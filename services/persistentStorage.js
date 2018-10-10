@@ -17,10 +17,12 @@ export const retrieveData = async (key) => {
     if (value !== null) {
       return JSON.parse(value);
     }
+    return null;
   } catch (error) {
     console.log('Error retriving data', error);
+    return null;
   }
-}
+};
 
 export const removeData = async (key) => {
   try {
@@ -28,6 +30,6 @@ export const removeData = async (key) => {
   } catch (error) {
     console.log('Error removing data', error);
   }
-}
+};
 
 export default {};

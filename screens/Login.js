@@ -10,6 +10,18 @@ import AppLink from '../components/AppLink';
 
 import * as actions from '../store/actions';
 
+const styles = StyleSheet.create({
+  container: {
+    width: '90%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  additionalActions: {
+    marginTop: 20,
+  },
+});
+
+
 class Login extends React.PureComponent {
   state = {
     email: '',
@@ -34,15 +46,15 @@ class Login extends React.PureComponent {
         <View style={styles.container}>
           <AppInput
             label="Email"
-            onChangeInput={(value) => this.onChangeInput(value, 'email')}
+            onChangeInput={value => this.onChangeInput(value, 'email')}
           />
           <AppInput
             label="Password"
-            onChangeInput={(value) => this.onChangeInput(value, 'password')}
+            onChangeInput={value => this.onChangeInput(value, 'password')}
             secureTextEntry
           />
           <AppButton
-            title='LOGIN'
+            title="LOGIN"
             onPress={this.onSubmit}
             disabled={!email || !password}
           />
@@ -61,17 +73,6 @@ class Login extends React.PureComponent {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    width: '90%',
-    marginLeft: 'auto',
-    marginRight: 'auto'
-  },
-  additionalActions: {
-    marginTop: 20
-  }
-});
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,

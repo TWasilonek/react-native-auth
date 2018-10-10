@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, StyleSheet} from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import {
   Text,
   Card,
@@ -10,6 +10,22 @@ import {
 import * as actions from '../store/actions';
 import { colors } from '../theme';
 import AppButton from '../components/AppButton';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.white,
+  },
+  text: {
+    marginBottom: 10,
+  },
+  buttonStyle: {
+    borderRadius: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: 0,
+  },
+});
 
 class ProtectedScreen extends React.PureComponent {
   onLogoutPress = () => {
@@ -20,9 +36,9 @@ class ProtectedScreen extends React.PureComponent {
   render() {
     return (
       <View style={styles.container}>
-        <Card 
-          title='Protected screen'
-          image={require('../assets/nusa-sunset.jpeg')}
+        <Card
+          title="Protected screen"
+          image={require('../assets/nusa-sunset.jpeg')} // eslint-disable-line global-require
         >
           <Text style={styles.text}>
             This is a protected view, which is accessible only to logged in users.
@@ -31,7 +47,8 @@ class ProtectedScreen extends React.PureComponent {
             onPress={this.onLogoutPress}
             icon={{ name: 'exit-to-app' }}
             buttonStyle={styles.buttonStyle}
-            title='LOGOUT' />
+            title="LOGOUT"
+          />
         </Card>
       </View>
     );
@@ -41,21 +58,5 @@ class ProtectedScreen extends React.PureComponent {
 ProtectedScreen.propTypes = {
   logout: PropTypes.func.isRequired,
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.white,
-  },
-  text: {
-    marginBottom: 10
-  },
-  buttonStyle: {
-    borderRadius: 0,
-    marginLeft: 0,
-    marginRight: 0,
-    marginBottom: 0,
-  }
-});
 
 export default connect(null, actions)(ProtectedScreen);

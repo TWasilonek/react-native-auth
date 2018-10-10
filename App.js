@@ -1,27 +1,23 @@
 import React from 'react';
-import Main from './screens/Main';
-
-// redux
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
+import Main from './screens/Main';
 
-import rootReducer from './store/rootReducer'
+import rootReducer from './store/rootReducer';
 import rootSaga from './store/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   rootReducer,
-  applyMiddleware(sagaMiddleware)
+  applyMiddleware(sagaMiddleware),
 );
 sagaMiddleware.run(rootSaga);
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Main />
-      </Provider>
-    );
-  }
-}
+const App = () => (
+  <Provider store={store}>
+    <Main />
+  </Provider>
+);
+
+export default App;

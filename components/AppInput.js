@@ -8,36 +8,34 @@ import {
 
 import { colors } from '../theme';
 
-const AppInput = ({ label, onChangeInput, ...rest }) => {
-  return (
-    <View style={styles.inputContainer}>
-      <FormLabel>{label}</FormLabel>
-      <FormInput
-        onChangeText={onChangeInput}
-        containerStyle={styles.inputContainerStyle}
-        {...rest}
-      />
-    </View>
-  );
-};
+const styles = StyleSheet.create({
+  inputContainer: {
+    marginBottom: 20,
+  },
+  inputContainerStyle: {
+    borderBottomColor: colors.green,
+  },
+});
+
+const AppInput = ({ label, onChangeInput, ...rest }) => (
+  <View style={styles.inputContainer}>
+    <FormLabel>{label}</FormLabel>
+    <FormInput
+      onChangeText={onChangeInput}
+      containerStyle={styles.inputContainerStyle}
+      {...rest}
+    />
+  </View>
+);
 
 AppInput.propTypes = {
   label: PropTypes.string,
   onChangeInput: PropTypes.func,
-}
+};
 
 AppInput.defaultProps = {
   label: '',
   onChangeInput: () => {},
 };
-
-const styles = StyleSheet.create({
-  inputContainer: {
-    marginBottom: 20
-  },
-  inputContainerStyle: {
-    borderBottomColor: colors.green
-  }
-});
 
 export default AppInput;

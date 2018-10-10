@@ -1,6 +1,6 @@
-export const login = ({ email, password }) => {
+export const login = ({ email, password }) => (
   // fake async http call returning user
-  return new Promise((resolve) => {
+  new Promise((resolve) => {
     setTimeout(() => {
       resolve({
         username: email,
@@ -8,12 +8,12 @@ export const login = ({ email, password }) => {
         password,
       });
     }, 300);
-  });
-}
+  })
+);
 
-export const signUp = ({ email, password }) => {
+export const signUp = ({ email, password }) => (
   // fake async http call returning user
-  return new Promise((resolve) => {
+  new Promise((resolve) => {
     setTimeout(() => {
       resolve({
         username: email,
@@ -21,7 +21,7 @@ export const signUp = ({ email, password }) => {
         password,
       });
     }, 300);
-  });
-}
+  })
+);
 
 export default {};

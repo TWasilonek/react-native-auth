@@ -9,10 +9,21 @@ import AppButton from '../components/AppButton';
 
 import * as actions from '../store/actions';
 
+const styles = StyleSheet.create({
+  container: {
+    width: '90%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  additionalActions: {
+    marginTop: 20,
+  },
+});
+
 class SignUp extends React.PureComponent {
   state = {
     email: '',
-    password: ''
+    password: '',
   };
 
   onChangeInput = (text, name) => {
@@ -50,22 +61,11 @@ class SignUp extends React.PureComponent {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    width: '90%',
-    marginLeft: 'auto',
-    marginRight: 'auto'
-  },
-  additionalActions: {
-    marginTop: 20
-  }
-});
-
 SignUp.propTypes = {
-  signUp: PropTypes.func.isRequired
+  signUp: PropTypes.func.isRequired,
 };
 
 export default connect(
   null,
-  actions
+  actions,
 )(SignUp);
