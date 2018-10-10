@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createStackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
-import * as actions from '../store/actions';
-import * as storage from '../services/persistentStorage';
+import * as actions from './store/actions';
+import * as storage from './services/persistentStorage';
 
-import SignUp from './SignUp';
-import Login from './Login';
-import ProtectedScreen from './ProtectedScreen';
-import ForgotPassword from './ForgotPassword';
+import SignUp from './screens/SignUp';
+import Login from './screens/Login';
+import ProtectedScreen from './screens/ProtectedScreen';
+import ForgotPassword from './screens/ForgotPassword';
 
-import { colors } from '../theme';
+import { colors } from './theme';
 
 const AuthStack = createStackNavigator(
   {
@@ -53,10 +53,7 @@ class Main extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const {
-      isAuthenticating,
-      user,
-    } = this.props;
+    const { isAuthenticating, user } = this.props;
 
     if (!isAuthenticating) {
       if (user && user.username) {
@@ -73,11 +70,7 @@ class Main extends React.Component {
     const { user } = this.props;
     const isLoggedIn = user && !!user.username;
 
-    return (
-      isLoggedIn
-        ? <MainStack />
-        : <AuthStack />
-    );
+    return isLoggedIn ? <MainStack /> : <AuthStack />;
   }
 }
 
@@ -99,4 +92,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, actions)(Main);
+export default connect(
+  mapStateToProps,
+  actions,
+)(Main);
