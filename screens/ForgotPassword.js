@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
-import { Button, Text} from 'react-native-elements';
+import { Text} from 'react-native-elements';
 
 import ScreenContainer from '../components/ScreenContainer';
 import AppInput from '../components/AppInput';
+import AppButton from '../components/AppButton';
 
 class ForgotPassword extends React.PureComponent {
   state = {
@@ -32,7 +33,7 @@ class ForgotPassword extends React.PureComponent {
             label="Email"
             onChangeInput={(value) => this.onChangeInput(value, 'email')}
           />
-          <Button
+          <AppButton
             title='SEND EMAIL'
             onPress={this.onSubmit}
             disabled={!email}

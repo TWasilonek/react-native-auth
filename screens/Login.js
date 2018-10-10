@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
-import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 
 import ScreenContainer from '../components/ScreenContainer';
 import AppInput from '../components/AppInput';
+import AppButton from '../components/AppButton';
+import AppLink from '../components/AppLink';
 
 import * as actions from '../store/actions';
 
@@ -40,22 +41,18 @@ class Login extends React.PureComponent {
             onChangeInput={(value) => this.onChangeInput(value, 'password')}
             secureTextEntry
           />
-          <Button
+          <AppButton
             title='LOGIN'
             onPress={this.onSubmit}
             disabled={!email || !password}
           />
           <View style={styles.additionalActions}>
-            <Button
+            <AppLink
               title="Not a member? Sign In"
-              color="#0000ff"
-              backgroundColor="transparent"
               onPress={() => navigation.navigate('SignUp')}
             />
-            <Button
+            <AppLink
               title="Forgot Password"
-              color="#0000ff"
-              backgroundColor="transparent"
               onPress={() => navigation.navigate('ForgotPassword')}
             />
           </View>

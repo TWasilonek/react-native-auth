@@ -5,10 +5,11 @@ import { View, StyleSheet} from 'react-native';
 import {
   Text,
   Card,
-  Button,
 } from 'react-native-elements';
 
 import * as actions from '../store/actions';
+import { colors } from '../theme';
+import AppButton from '../components/AppButton';
 
 class ProtectedScreen extends React.PureComponent {
   onLogoutPress = () => {
@@ -26,10 +27,9 @@ class ProtectedScreen extends React.PureComponent {
           <Text style={styles.text}>
             This is a protected view, which is accessible only to logged in users.
           </Text>
-          <Button
+          <AppButton
             onPress={this.onLogoutPress}
             icon={{ name: 'exit-to-app' }}
-            backgroundColor='#03A9F4'
             buttonStyle={styles.buttonStyle}
             title='LOGOUT' />
         </Card>
@@ -45,7 +45,7 @@ ProtectedScreen.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: colors.white,
   },
   text: {
     marginBottom: 10

@@ -6,11 +6,17 @@ import {
   FormInput,
 } from 'react-native-elements';
 
+import { colors } from '../theme';
+
 const AppInput = ({ label, onChangeInput, ...rest }) => {
   return (
     <View style={styles.inputContainer}>
       <FormLabel>{label}</FormLabel>
-      <FormInput onChangeText={onChangeInput} {...rest} />
+      <FormInput
+        onChangeText={onChangeInput}
+        containerStyle={styles.inputContainerStyle}
+        {...rest}
+      />
     </View>
   );
 };
@@ -27,7 +33,10 @@ AppInput.defaultProps = {
 
 const styles = StyleSheet.create({
   inputContainer: {
-    marginBottom: 20,
+    marginBottom: 20
+  },
+  inputContainerStyle: {
+    borderBottomColor: colors.green
   }
 });
 

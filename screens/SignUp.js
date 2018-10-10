@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
-import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 
 import ScreenContainer from '../components/ScreenContainer';
 import AppInput from '../components/AppInput';
+import AppButton from '../components/AppButton';
 
 import * as actions from '../store/actions';
 
@@ -39,7 +39,7 @@ class SignUp extends React.PureComponent {
             onChangeInput={value => this.onChangeInput(value, 'password')}
             secureTextEntry
           />
-          <Button
+          <AppButton
             title="SIGNUP"
             onPress={this.onSubmit}
             disabled={!email || !password}
