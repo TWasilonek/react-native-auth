@@ -38,6 +38,16 @@ cd react-native-auth
 yarn || npm install
 ```
 
+4. Install Expo CLI (if you don't have it yet): [Expo installation](https://docs.expo.io/versions/v30.0.0/introduction/installation.html)
+
+5. Start the project
+
+```
+npm run start || expo start
+```
+
+6. Open the app with one of the available options: Android simulator, iOS Simulator (Mac) or with the Expo app on your smartphone. [Expo project guide](https://docs.expo.io/versions/v30.0.0/guides/up-and-running.html)
+
 ## Description
 
 This project is a simple authentication React Native app.
