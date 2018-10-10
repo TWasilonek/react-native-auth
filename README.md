@@ -23,7 +23,7 @@ React Native authentication template.
 1. Clone project   
 
 ```
-git clone 
+git clone https://github.com/TWasilonek/react-native-auth.git
 ```
 
 2. Change into react-native-auth directory   
