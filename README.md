@@ -51,10 +51,11 @@ npm run start || expo start
 ## Description
 
 This project is a simple authentication React Native app.
-My goal was to ctreate a template that I can reuse in my apps, that gives me the most needed frontend authentication pieces:
+My goal was to ctreate a template that I can reuse in other apps, that gives me the most needed frontend authentication pieces:
   * The auth flow logic,
   * Auth flow screen templates: Login, Sign Up and Forgot Password,
-  * React Navigation for navigating,
-  * State management template with Redux and Redux Saga,
-  * Simple stubbed api that is a starting point to implement any authentication provider.
+  * Navigation system with React Navigation,
+  * State management with Redux and Redux Saga,
+  * Simple stubbed api that is a starting point to implement any authentication provider,
+  * Permanent storage of logged user with AsyncStorage
 
