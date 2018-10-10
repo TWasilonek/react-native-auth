@@ -2,7 +2,7 @@
 
 React Native authentication template.
 
-![](https://imgur.com/282yFbx)
+![](https://i.imgur.com/282yFbx.png)
 
 
 ## Features   
